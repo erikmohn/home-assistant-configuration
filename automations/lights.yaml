@@ -1,0 +1,19 @@
+- id: Light Level is Low - Switch On
+  alias: Light Level is Low - Switch On
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.illumination_7811dcb26612
+    below: 870
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: "08:00:00"
+      - condition: state
+        entity_id: group.all_devices
+        state: 'home'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.spisebord
+        transition: 7

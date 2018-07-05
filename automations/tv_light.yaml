@@ -1,0 +1,19 @@
+- alias: Turn on tv light
+  trigger:
+    platform: template
+    value_template: "{{states.media_player.samsung_tv_remote.state == 'on'}}"
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.tv
+        transition: 7
+
+- alias: Turn off tv light
+  trigger:
+    platform: template
+    value_template: "{{states.media_player.samsung_tv_remote.state == 'off'}}"
+  action:
+    - service: light.turn_off
+      data: 
+        entity_id: light.tv
+        transition: 7

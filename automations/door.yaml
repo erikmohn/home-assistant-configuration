@@ -1,0 +1,25 @@
+- alias: Notify when front door is unlocked
+  trigger:
+    platform: state
+    entity_id: lock.hovedinngang
+    to: 'unlocked'
+    for: 
+      minutes: 5
+  action:
+    - service: notify.ios_erik
+      data:
+        title: "Fernanda nissens gate"
+        message: Utgangsdøren er ulåst.
+
+- alias: Notify when fridge door is open
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d0001ef31a2
+    to: 'on'
+    for: 
+      minutes: 5
+  action:
+    - service: notify.ios_erik
+      data:
+        title: "Fernanda nissens gate"
+        message: Kjøleskapet står åpent!

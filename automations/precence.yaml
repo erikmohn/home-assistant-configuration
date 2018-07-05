@@ -1,0 +1,91 @@
+- alias: Turn on light yttergang when movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d000226f951
+    to: 'on'
+  action:
+   - service: switch.turn_on
+     entity_id: switch.yttergang
+
+- alias: If there no motion turn off yttergang lights
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d000226f951
+    to: 'off'
+    for: 
+      minutes: 3
+  action:
+    - service: switch.turn_off
+      entity_id: switch.yttergang
+      
+- alias: Turn on light kjokken when movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001e07335
+    to: 'on'
+  condition:
+    - condition: time
+      after: '06:30:00'
+      before: '23:00:00'
+  action:
+   - service: switch.turn_on
+     entity_id: switch.kjokken
+
+- alias: If there no motion turn off kjokken lights
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001e07335
+    to: 'off'
+    for:
+      minutes: 5
+  action:
+    - service: switch.turn_off
+      entity_id: switch.kjokken
+
+- alias: Turn on light gang when movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d00022778f7
+    to: 'on'
+  condition:
+    - condition: time
+      after: '06:30:00'
+      before: '22:00:00'
+  action:
+   - service: switch.turn_on
+     entity_id: switch.gang
+
+- alias: If there no motion turn off gang lights
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d00022778f7
+    to: 'off'
+    for:
+      minutes: 5
+  action:
+    - service: switch.turn_off
+      entity_id: switch.gang
+
+- alias: If there no motion turn off the MagicMirror
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d00022778f7
+    to: 'off'
+    for:
+      minutes: 10
+  action:
+    - service: switch.turn_off
+      entity_id: switch.magicmirror
+
+- alias: Turn on MagicMirror when movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d00022778f7
+    to: 'on'
+  condition:
+    - condition: time
+      after: '06:30:00'
+      before: '22:00:00'
+  action:
+   - service: switch.turn_on
+     entity_id: switch.magicmirror

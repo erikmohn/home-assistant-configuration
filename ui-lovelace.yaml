@@ -1,0 +1,180 @@
+name: Fernanda Nissens gate 3F
+views:
+  - name: Home
+    tab_icon: mdi:home-assistant
+    cards:
+      - type: glance
+        title: Informasjon
+        entities:
+          - sensor.temperature_158d0002016898 #Stue
+          - sensor.temperature_158d000201a113 #Ute
+          - sensor.temperature_158d00020ecf51 #Ute2
+          - sensor.temperature_158d0002018e2c #Soverom
+          - sensor.temperature_158d00022264a9 #Bad
+          - sensor.badetemperatur
+          - lock.hovedinngang
+      - type: entity-filter
+        filter:
+          - domain: light
+            state: 'on'
+          - domain: switch
+            state: 'on'
+        card: glance
+        card_config:
+          title: Belysning i bruk
+      - type: picture-glance
+        image: https://preview.ibb.co/m3XpQT/D3589701_50_EE_4_B70_85_A7_35471_C8_F14_D5.jpg
+        title: Stue
+        entities:
+          - sensor.temperature_158d0002016898
+          - light.spisebord
+          - light.tv
+          - switch.stue_kuler
+      - type: entities
+        title: Solskjerming
+        entities:
+          - cover.living_room_shutter
+      - type: entity-picture
+        image: https://preview.ibb.co/m8PQzo/17_E37_D22_E3_B3_4991_A519_712177_F093_E3.jpg
+        title: Kjøkken
+        entity: switch.kjokken
+      - type: picture-glance
+        image: https://preview.ibb.co/nuN4aT/8_AEC613_F_9_AA2_4_F1_A_B3_E4_48_FD0003675_F.jpg
+        title: Soverom
+        entities:
+          - sensor.temperature_158d0002018e2c
+          - switch.soverom
+          - switch.soverom_staalampe
+          - light.seng
+
+      - type: picture-glance
+        image: https://preview.ibb.co/impTkT/1601_B0_E7_53_FB_4010_AB6_E_C72365_D34_C64.jpg
+        title: Gang
+        entities: 
+          - switch.gang
+          - switch.yttergang
+          - switch.magicmirror
+      - type: entity-filter
+        filter:
+          - domain: device_tracker
+            state: 'home'
+        card: entities
+        card_config:
+          title: Hvem er hjemme
+
+      - type: entities
+        title: Sonos
+        entities: 
+          - media_player.bad
+          - media_player.soverom
+          - media_player.gang
+          - media_player.stue
+          - media_player.kjkken
+      - type: weather-forecast
+        title: Vær
+        entity: weather.yweather
+
+      
+  - name: Stue
+    tab_icon: mdi:sofa
+    cards: 
+      - type: glance
+        title: Informasjon
+        entities:
+          - sensor.temperature_158d0002016898 #Stue
+          - sensor.temperature_158d000201a113 #Ute
+      - type: entities
+        title: Belysning
+        entities: 
+          - light.spisebord
+          - light.tv
+          - switch.globus
+          - switch.stue_kuler
+          - switch.kjokken
+      - type: entities
+        title: Solskjerming
+        entities:
+          - cover.living_room_shutter
+          - cover.living_room_shutter_left
+          - cover.living_room_shutter_right
+
+  - name: Soverom
+    tab_icon: mdi:hotel
+    cards:
+      - type: glance
+        title: Informasjon
+        entities:
+          - sensor.temperature_158d0002018e2c
+      - type: picture-glance
+        image: https://preview.ibb.co/nuN4aT/8_AEC613_F_9_AA2_4_F1_A_B3_E4_48_FD0003675_F.jpg
+        title: Soverom
+        entities:
+          - sensor.temperature_158d0002018e2c 
+          - switch.soverom
+          - switch.soverom_staalampe
+          - light.seng
+      - type: entities
+        title: Morgenradio
+        entities: 
+          - input_datetime.morgenradio
+          - input_boolean.morgenradio
+
+      - type: entity-picture
+        image: https://preview.ibb.co/e2x9s8/0_FA0_D45_E_2_BC5_4_BCD_8_ECF_06_B5252_FCEB8.jpg
+        title: Gjesterom
+        entity: switch.gjesterom
+
+      - type: entity-picture
+        image: https://preview.ibb.co/jSZB5T/A62_BCC37_6162_4_DE3_8781_32463112_FBCA.jpg
+        title: Kontor
+        entity: switch.kontor
+
+  - name: Gang
+    tab_icon: mdi:door
+    cards:
+      - type: entities
+        title: Belysning
+        entities: 
+          - switch.gang
+          - switch.yttergang
+ 
+      - type: entities
+        title: Magic Mirror
+        entities: 
+          - switch.magicmirror
+          - input_text.mm_message
+          - script.new_message
+
+
+  - tab_icon: mdi:settings
+    name: Debugging
+    cards:
+      - type: glance
+        title: System
+        entities:
+          - sensor.disk_use_percent_
+          - sensor.memory_use_percent
+          - sensor.processor_use
+          - sensor.last_boot
+          - sensor.tid_online
+      - type: glance
+        title: Internett
+        entities: 
+          - sensor.speedtest_download
+          - sensor.speedtest_upload
+          - sensor.speedtest_ping
+          - sensor.update_speedtest
+      - type: entities
+        title: Pi-Hole
+        entities:
+          - sensor.pihole_domains_blocked
+          - sensor.pihole_dns_unique_domains
+          - sensor.pihole_dns_queries_today
+          - sensor.pihole_dns_queries_forwarded
+          - sensor.pihole_dns_queries_cached
+          - sensor.pihole_ads_percentage_blocked_today
+          - sensor.pihole_ads_blocked_today
+      - type: entity-filter
+        filter: [{}]
+        card_config:
+          title: All entities

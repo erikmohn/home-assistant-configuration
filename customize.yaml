@@ -1,0 +1,91 @@
+switch.magicmirror:
+  icon: mdi:monitor
+script.new_message:
+  friendly_name: Ny melding
+script.all_off:
+  friendly_name: Alle lys av
+switch.stue_kuler:
+  friendly_name: Kuler
+  icon: mdi:lightbulb
+lock.hovedinngang:
+  friendly_name: Dør
+switch.soverom_staalampe:
+  friendly_name: Stålampe
+  icon: mdi:floor-lamp
+switch.gjesterom:
+  friendly_name: Gjesterom
+  icon: mdi:ceiling-light
+switch.globus:
+  friendly_name: Globus
+  icon: mdi:globe-model
+light.spisebord:
+  friendly_name: Spisebord
+  icon: mdi:ceiling-light
+light.seng:
+  friendly_name: Seng
+  icon: mdi:bed-empty
+light.tv:
+  friendly_name: TV
+  icon: mdi:television
+switch.gang:
+  friendly_name: Gang
+  icon: mdi:track-light
+switch.yttergang:
+  friendly_name: Yttergang
+  icon: mdi:track-light
+switch.fibaro_system_fgwpef_wall_plug_gen5_switch:
+  icon: mdi:track-light
+switch.soverom:
+  friendly_name: Soverom
+  icon: mdi:ceiling-light
+switch.kontor:
+  friendly_name: Kontor
+  icon: mdi:ceiling-light
+switch.kjokken:
+  friendly_name: Kjøkken
+  icon: mdi:ceiling-light
+cover.living_room_shutter:
+  friendly_name: Stue
+  icon: mdi:blinds
+cover.living_room_shutter_left:
+  friendly_name: Stue (Venstre)
+  icon: mdi:blinds
+cover.living_room_shutter_right:
+  friendly_name: Stue (Høyre)
+  icon: mdi:blinds
+binary_sensor.motion_sensor_158d00022778f7:
+  friendly_name: MagicMirror
+binary_sensor.motion_sensor_158d000226f951:
+  friendly_name: Yttergang
+device_tracker.erik:
+  friendly_name: Erik
+device_tracker.ida_sin_iphone:
+  friendly_name: Ida
+sensor.humidity_158d0002016898:
+  rgb_color: rgb(0,191,255)
+sensor.humidity_158d0002018e2c:
+  rgb_color: rgb(0,191,255)
+sensor.humidity_158d000201a113:
+  rgb_color: rgb(0,191,255)
+sensor.fibaro_system_fgwpef_wall_plug_gen5_power_2:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_gen5_power_management:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_gen5_sourcenodeid:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_gen5_power:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_gen5_exporting:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_gen5_energy:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_type:
+  hidden: true
+sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_level:
+  hidden: true
+weather.yweather:
+  friendly_name: Vær
+light.spisebord1:
+  hidden: true
+light.spisebord2:
+  hidden: true

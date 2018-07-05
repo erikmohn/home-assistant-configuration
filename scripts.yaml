@@ -1,0 +1,9 @@
+  all_off:
+    sequence:
+        - alias: Switches off
+          service: switch.turn_off
+
+  new_message:
+    sequence:
+        - alias: Ny melding   
+          service: shell_command.new_mm_message

@@ -1,0 +1,49 @@
+- id: start-homekit
+  alias: 'Start HomeKit'
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay: 00:05
+    - service: homekit.start
+    
+- id: letsencrypt-renewal
+  alias: "Let's Encrypt Renewal"
+  trigger:
+  - platform: time
+    at: '00:00:00'
+  action:
+  - service: hassio.addon_restart
+    data:
+      addon: core_letsencrypts
+
+- id: update-available
+  alias: "Update Available Notifications"
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+    - service: notify.ios_erik
+      data:
+        title: "Fernanda nissens gate"
+        message: Ny oppdatering for Home Assistant er tilgjengelig
+- id: check-tropenatt
+  alias: "Har det vært tropenatt"
+  trigger:
+  - platform: time
+    at: '08:15:00'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.tropenatt
+      above: 19
+  action: 
+    - service: notify.ios_erik
+      data:
+        title: "Fernanda nissens gate"
+        message: I natt har det vært tropenatt med laveste temperatur {{ states.sensor.tropenatt.state }} grader
+    - service: notify.ios_ida_sin_iphone
+      data:
+        title: "Fernanda nissens gate"
+        message: I natt har det vært tropenatt med laveste temperatur {{ states.sensor.tropenatt.state }} grader
+
+

@@ -1,0 +1,53 @@
+- alias: If nobody home dont play music
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    from: 'home'
+    to: 'not_home'
+  condition:
+    - condition: or
+      conditions:
+        - condition: state 
+          entity_id: media_player.stue 
+          state: 'playing'
+        - condition: state 
+          entity_id: media_player.kjkken 
+          state: 'playing'
+        - condition: state 
+          entity_id: media_player.soverom 
+          state: 'playing'
+        - condition: state 
+          entity_id: media_player.gang 
+          state: 'playing'
+        - condition: state 
+          entity_id: media_player.bad 
+          state: 'playing'
+  action:
+    - service: media_player.turn_off
+      entity_id: media_player.stue
+    - service: media_player.turn_off
+      entity_id: media_player.kjkken
+    - service: media_player.turn_off
+      entity_id: media_player.soverom
+    - service: media_player.turn_off
+      entity_id: media_player.gang
+    - service: media_player.turn_off
+      entity_id: media_player.bad
+    - service: notify.ios_erik
+      data:
+        title: "Fernanda nissens gate"
+        message: Sonos skrus av, da ingen er hjemme
+
+- alias: If nobody home turn off all lights
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    from: 'home'
+    to: 'not_home'
+  action:
+    - service: switch.turn_off
+    - service: light.turn_off
+    - service: notify.ios_erik
+      data:
+        title: "Fernanda nissens gate"
+        message: Alle lys skrudd av når ingen er hjemme

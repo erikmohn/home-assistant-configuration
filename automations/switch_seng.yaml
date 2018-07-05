@@ -1,0 +1,123 @@
+- alias: Ida knapp soverom Staalampe
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.switch_158d0001e5f76a
+      click_type: double
+  action:
+    - service: switch.toggle
+      data:
+        entity_id: switch.soverom_staalampe
+#    - service: light.toggle
+#      data:
+#        entity_id: light.seng
+
+- alias: Erik knapp soverom Staalampe 
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.switch_158d0001f495e0
+      click_type: double
+  action:
+    - service: switch.toggle
+      data:
+        entity_id: switch.soverom_staalampe
+ #   - service: light.toggle
+ #     data:
+ #       entity_id: light.seng
+
+- alias: Erik knapp soverom Taklampe
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.switch_158d0001f495e0
+      click_type: single
+  action:
+    service: switch.toggle
+    data:
+      entity_id: switch.soverom
+
+- alias: Ida knapp soverom Taklampe
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.switch_158d0001e5f76a
+      click_type: single
+  action:
+    service: switch.toggle
+    data:
+      entity_id: switch.soverom
+
+- alias: Ida morgen sonos
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.switch_158d0001e5f76a
+      click_type: long_click_press
+  action:
+    - service: media_player.sonos_join
+      data:
+        master: media_player.soverom
+        entity_id:
+          - media_player.bad
+          - media_player.gang
+          - media_player.kjkken
+          - media_player.soverom
+    - service: media_player.volume_set
+      data:
+        volume_level: '0.1'
+      entity_id:
+        - media_player.bad
+        - media_player.gang
+        - media_player.kjkken
+        - media_player.soverom
+        - media_player.stue
+    - service: media_player.volume_set
+      data: 
+        volume_level: '0.3'
+      entity_id:
+        - media_player.bad
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.soverom
+        source: 'NRK P3'
+
+- alias: Erik morgen sonos
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.switch_158d0001f495e0
+      click_type: long_click_press
+  action:
+    - service: media_player.sonos_join
+      data:
+        master: media_player.soverom
+        entity_id:
+          - media_player.bad
+          - media_player.gang
+          - media_player.kjkken
+          - media_player.soverom
+    - service: media_player.volume_set
+      data:
+        volume_level: '0.1'
+      entity_id:
+        - media_player.bad
+        - media_player.gang
+        - media_player.kjkken
+        - media_player.soverom
+        - media_player.stue
+    - service: media_player.volume_set
+      data:
+        volume_level: '0.3'
+      entity_id:
+        - media_player.bad
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.soverom
+        source: 'NRK P3'

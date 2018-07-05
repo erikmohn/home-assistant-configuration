@@ -1,0 +1,388 @@
+homeassistant:
+  name: !secret name
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 95
+  unit_system: metric
+  time_zone: Europe/Oslo
+  customize: !include customize.yaml
+
+frontend:
+  javascript_version: latest
+  themes:
+    happy:
+      primary-color: pink
+    sad:
+      primary-color: blue
+  extra_html_url:
+    - /local/lovelace.html
+
+config:
+shopping_list:
+sun:
+cloud:
+ios:
+updater:
+hassio:
+
+history:
+  include:
+    entities:
+      - sensor.temperature_158d0002016898 #Stue
+      - sensor.temperature_158d000201a113 #Ute
+      - sensor.temperature_158d00020ecf51 #Ute2
+      - sensor.temperature_158d0002018e2c #Soverom
+      - sensor.temperature_158d00022264a9 #Bad
+http:
+   api_password: !secret password
+   base_url: !secret http_base_url
+   ssl_certificate: /ssl/fullchain.pem
+   ssl_key: /ssl/privkey.pem
+
+logbook:
+  exclude:
+    entities:
+      - sensor.time
+
+recorder:
+  db_url: !secret db_url
+
+logger:
+  default: critical
+#  logs:
+#    homeassistant.components.xiaomi_aqara: debug
+
+homekit:
+  auto_start: False
+
+weather:
+  - platform: yweather      
+
+  
+#group: !include groups.yaml
+automation: !include_dir_merge_list automations/
+script: !include scripts.yaml
+
+verisure:
+  username: !secret verisure_username
+  password: !secret password
+
+zwave:
+  usb_path: /dev/ttyACM0
+  network_key: "0xCD, 0x8B, 0x7C, 0x92, 0x96, 0x1F, 0xC9, 0x33, 0x81, 0x91, 0xD9, 0x71, 0xE4, 0x33, 0x59, 0xF6"
+  device_config:
+    switch.bryter_switch:
+      ignored: true
+
+group:
+  default_view:
+    view: yes
+    icon: mdi:home
+    entities:
+      - device_tracker.3871de7bc14f
+      - device_tracker.409c281ea38f
+      - sensor.yr_symbol
+      - sun.sun
+      - sensor.yr_symbol
+      - sensor.temperature_158d0002016898 #Stue
+      - sensor.temperature_158d000201a113 #Ute
+      - sensor.badetemperatur
+      - lock.hovedinngang
+      - group.hovedbrytere
+      - group.solskjerming
+      - group.automasjon
+  hovedbrytere:
+    name: Belysning
+    icon: mdi:lightbulb
+    entities:
+      - light.spisebord
+      - switch.kjokken
+      - switch.fibaro_system_fgwpef_wall_plug_gen5_switch
+      - switch.gang      
+  lys:
+    view: yes
+    icon: mdi:lightbulb
+    entities:
+      - group.alle_lys
+  alle_lys:
+    name: All belysning
+    entities:
+      - switch.fibaro_system_fgwpef_wall_plug_gen5_switch
+      - switch.kjokken
+      - switch.soverom
+      - switch.gang
+      - light.spisebord
+      - switch.yttergang
+      - switch.gjesterom
+      - switch.kontor
+      - switch.soverom_staalampe 
+      - switch.stue_kuler
+      - light.seng
+  stue:
+    view: yes
+    icon: mdi:sofa
+    name: Stue
+    entities:
+      - sensor.temperature_158d0002016898
+      - sensor.humidity_158d0002016898
+      - sensor.illumination_7811dcb26612
+      - sensor.illumination_158d0001e07335
+      - binary_sensor.motion_sensor_158d0001e07335
+      - group.belysning_stue
+      - group.solskjerming
+      - media_player.stue
+      - media_player.kjkken
+  belysning_stue:
+    name: Belysning
+    entities:
+      - light.spisebord
+      - light.tv 
+      - switch.yttergang
+      - switch.stue_kuler 
+      - switch.kjokken
+  soverom:
+    view: yes
+    icon: mdi:hotel
+    name: Soverom
+    entities:
+       - sensor.temperature_158d0002018e2c
+       - sensor.humidity_158d0002018e2c
+       - group.hovedsoverom
+       - group.morgenradio
+       - group.kontor
+       - group.gjesterom
+       - media_player.soverom
+  hovedsoverom:
+    name: Soverom
+    entities:
+       - switch.soverom
+       - switch.soverom_staalampe
+       - light.seng
+  kontor:
+    name: Kontor
+    entities:
+       - switch.kontor
+  gjesterom:
+    name: Gjesterom
+    entities:
+       - switch.gjesterom
+  gang:
+    view: yes
+    icon: mdi:door
+    name: Gang
+    entities:
+       - binary_sensor.motion_sensor_158d000226f951
+       - binary_sensor.motion_sensor_158d00022778f7
+       - group.gang_belysning
+       - group.magicmirror
+       - media_player.gang
+  gang_belysning:
+    name: Belysning
+    entities:
+       - switch.gang
+       - switch.fibaro_system_fgwpef_wall_plug_gen5_switch
+  bad:
+    view: yes
+    icon: mdi:shower
+    entities:
+       - media_player.bad
+  tech:
+     view: yes
+     icon: mdi:radio-tower
+     entities:
+        - group.system 
+        - group.internett
+        - group.temperatur
+        - group.luftfuktighet
+  solskjerming:
+    name: Solskjerming
+    entities:
+      - cover.living_room_shutter
+      - cover.living_room_shutter_left
+      - cover.living_room_shutter_right
+  automasjon:
+    name: Automasjon
+    entities:
+      - script.all_off
+  temperatur:
+    name: Temperatur
+    entities:
+      - sensor.temperature_158d0002016898
+      - sensor.temperature_158d0002018e2c
+      - sensor.temperature_158d000201a113
+      - sensor.badetemperatur
+  luftfuktighet:
+    name: Luftfuktighet
+    entities: 
+       - sensor.humidity_158d0002016898  #stue
+       - sensor.humidity_158d0002018e2c  #soverom
+       - sensor.humidity_158d000201a113  #ute
+  internett:
+    name: Internett
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+      - sensor.update_speedtest
+  system:
+    name: System
+    entities:
+      - sensor.disk_use_percent_
+      - sensor.memory_use_percent
+      - sensor.processor_use
+      - sensor.last_boot
+      - sensor.tid_online
+  magicmirror:
+    name: MagicMirror
+    entities:
+      - switch.magicmirror
+      - input_text.mm_message
+      - script.new_message
+  morgenradio:
+    name: Morgenradio
+    entities:
+      - input_datetime.morgenradio
+      - input_boolean.morgenradio
+  sonos:
+    name: Sonos
+    entities: 
+      - media_player.bad
+      - media_player.soverom
+      - media_player.gang
+      - media_player.stue
+      - media_player.kjkken
+input_text:
+  mm_message:
+    name: Melding
+
+input_boolean:
+  morgenradio:
+    name: Morgenradio på/av
+    initial: off
+    icon: mdi:radio
+  cover_left:
+  cover_right:
+
+input_datetime:
+  morgenradio:
+    name: Morgenradio tid
+    has_date: false
+    has_time: true
+
+
+media_player:
+  - platform: samsungtv
+    host: 192.168.1.74
+    mac: 50:85:69:f9:7b:67
+    timeout: 10
+xiaomi_aqara:
+  discovery_retry: 10
+  gateways: 
+    - key: 5234864A6B4449D8
+
+rfxtrx:
+  device: /dev/ttyUSB0
+
+cover:
+  - platform: rfxtrx
+    automatic_add: False
+    signal_repetitions: 2
+    devices:
+      071a000001020301: # RFY
+        name: Living room Shutter 
+      071a000001020302: # RFY
+        name: Living room Shutter Left
+      071a000001020303: # RFY
+        name: Living room Shutter Right
+
+switch:
+  - platform: rfxtrx
+    signal_repetitions: 4
+    devices:
+      0b11000404bc0cfe00010f70:
+        name: stue_kuler
+      0b11000373bc0cfe02010f70:
+        name: soverom_staalampe
+      0b11000403bc0cfe08010f70:
+        name: gjesterom
+      0b11000688bc0cfe06010f70:
+        name: yttergang
+      0b11000104bc0cfe03010f70:
+        name: gang
+      0b11000145bc0cfe07010f70:
+        name: soverom
+      0b11000300bc0cfe09010f70:
+        name: kontor
+      0b11000121bc0cfe08010f70:
+        name: kjokken
+  - platform: command_line
+    switches:
+      magicmirror:
+        command_on: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 'vcgencmd display_power 1' 2> /config/command.log
+        command_off: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 'vcgencmd display_power 0' 2> /config/command.log
+        command_state: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 './monitor_status.sh'
+        value_template: '{{ value == "0" }}'
+        friendly_name: MagicMirror
+
+shell_command:
+  new_mm_message: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 'echo "'<h2>{{ states.input_text.mm_message.state }} </h2>'" > /home/pi/MagicMirror/modules/default/helloworld/helloworld.njk & pm2 restart mm' 
+
+sensor:
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+  - platform: yr
+  - platform: command_line
+    name: Badetemperatur
+    command: "curl -is 'https://www.oslo.kommune.no/natur-kultur-og-fritid/tur-og-friluftsliv/badeplasser-og-temperaturer/brekkedammen-ved-frysja/' | grep 'ok-temperature' | sed -e 's/.*ok-temperature//g' | cut -f 1 -d '&' | cut -c 3-"
+    unit_of_measurement: "°C"
+    scan_interval: 10000
+  - platform: time_date
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use_percent
+      - type: ipv4_address
+      - type: processor_use
+      - type: last_boot
+  - platform: uptime
+    name: Tid online
+    unit_of_measurement: days
+  - platform: pi_hole
+  - platform: sql
+    db_url: !secret db_url
+    queries:
+      - name: Tropenatt
+        query: 'SELECT MIN(state) AS VALUE FROM states where entity_id in ("sensor.temperature_158d000201a113","sensor.temperature_158d00020ecf51") AND ((DATE(created) = current_date AND HOUR(created) < 8) OR (DATE(created) = DATE_SUB(current_Date,INTERVAL 1 DAY) AND HOUR(created) >= 20));'
+        column: 'VALUE'
+        unit_of_measurement: C
+  
+
+
+device_tracker:
+  - platform: asuswrt
+    host: 192.168.1.1
+    username: !secret asus_username
+    password: !secret password
+    home_interval: 10
+    consider_home: 360
+
+light:
+  - platform: yeelight
+    devices:
+      192.168.1.39:
+        name: seng
+      192.168.1.128:
+        name: spisebord1
+      192.168.1.254:
+        name: spisebord2
+      192.168.1.163:
+        name: tv
+  - platform: group
+    name: spisebord
+    entities:
+      - light.spisebord1
+      - light.spisebord2

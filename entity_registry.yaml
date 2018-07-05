@@ -1,0 +1,305 @@
+sensor.erikmohn_iphone_battery_level:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_erikmohn_iphone
+sensor.erikmohn_iphone_battery_state:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_erikmohn_iphone
+sensor.fibaro_system_fgwpef_wall_plug_gen5_power:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093256770
+sensor.fibaro_system_fgwpef_wall_plug_gen5_energy:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273090
+sensor.fibaro_system_fgwpef_wall_plug_gen5_power_2:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273218
+switch.fibaro_system_fgwpef_wall_plug_gen5_switch:
+  config_entry_id:
+  name: Yttergang
+  platform: zwave
+  unique_id: 3-72057594093060096
+sensor.fibaro_system_fgwpef_wall_plug_gen5_exporting:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273600
+sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_type:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305281
+sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_level:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305297
+sensor.fibaro_system_fgwpef_wall_plug_gen5_sourcenodeid:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305313
+sensor.fibaro_system_fgwpef_wall_plug_gen5_power_management:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305457
+binary_sensor.door_window_sensor_158d0001ef31a2:
+  config_entry_id:
+  name: Kjøleskap
+  platform: xiaomi_aqara
+  unique_id: status158d0001ef31a2
+light.gateway_light_7811dcb26612:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: rgb7811dcb26612
+sensor.temperature_158d0002018e2c:
+  config_entry_id:
+  name: Soverom
+  platform: xiaomi_aqara
+  unique_id: temperature158d0002018e2c
+sensor.humidity_158d0002016898:
+  config_entry_id:
+  name: Stue
+  platform: xiaomi_aqara
+  unique_id: humidity158d0002016898
+sensor.temperature_158d0002016898:
+  config_entry_id:
+  name: Stue
+  platform: xiaomi_aqara
+  unique_id: temperature158d0002016898
+sensor.humidity_158d0002018e2c:
+  config_entry_id:
+  name: Soverom
+  platform: xiaomi_aqara
+  unique_id: humidity158d0002018e2c
+sensor.illumination_7811dcb26612:
+  config_entry_id:
+  name: Lysstyrke
+  platform: xiaomi_aqara
+  unique_id: illumination7811dcb26612
+media_player.apple_tv:
+  config_entry_id:
+  name:
+  platform: apple_tv
+  unique_id: 9b45101315171aeba9aee6186e015f23408d24851037e3f8c6fa8ede22bb3da7
+remote.apple_tv:
+  config_entry_id:
+  name:
+  platform: apple_tv
+  unique_id: 9b45101315171aeba9aee6186e015f23408d24851037e3f8c6fa8ede22bb3da7
+media_player.soverom:
+  config_entry_id:
+  name:
+  platform: sonos
+  unique_id: RINCON_7828CA0200B801400
+media_player.kjkken:
+  config_entry_id:
+  name:
+  platform: sonos
+  unique_id: RINCON_7828CA03053001400
+media_player.bad:
+  config_entry_id:
+  name:
+  platform: sonos
+  unique_id: RINCON_7828CA020FA201400
+media_player.gang:
+  config_entry_id:
+  name:
+  platform: sonos
+  unique_id: RINCON_7828CA01FFD201400
+media_player.stue:
+  config_entry_id:
+  name:
+  platform: sonos
+  unique_id: RINCON_949F3E6E857801400
+sensor.temperature_158d000201a113:
+  config_entry_id:
+  name: Ute
+  platform: xiaomi_aqara
+  unique_id: temperature158d000201a113
+sensor.humidity_158d000201a113:
+  config_entry_id:
+  name: Ute
+  platform: xiaomi_aqara
+  unique_id: humidity158d000201a113
+media_player.apple_tv_2:
+  config_entry_id:
+  name:
+  platform: apple_tv
+  unique_id: 6afd5758920e3d998054f202219b3a101fe1657bf4110344bb33b910731d5423
+remote.apple_tv_2:
+  config_entry_id:
+  name:
+  platform: apple_tv
+  unique_id: 6afd5758920e3d998054f202219b3a101fe1657bf4110344bb33b910731d5423
+binary_sensor.motion_sensor_158d000226f951:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000226f951
+media_player.apple_tv_3:
+  config_entry_id:
+  name:
+  platform: apple_tv
+  unique_id: 7c4ef179dba3ca9499e96f599f6c88ac2d97a2c2cedcb11824e3f09e82457628
+remote.apple_tv_3:
+  config_entry_id:
+  name:
+  platform: apple_tv
+  unique_id: 7c4ef179dba3ca9499e96f599f6c88ac2d97a2c2cedcb11824e3f09e82457628
+sensor.ida_sin_iphone_battery_state:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_ida_sin_iphone
+sensor.ida_sin_iphone_battery_level:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_ida_sin_iphone
+binary_sensor.switch_158d0001e5f76a:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001e5f76a
+binary_sensor.switch_158d0001f495e0:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001f495e0
+sensor.erikmohn_iphone_battery_state_2:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: state_erik
+sensor.erikmohn_iphone_battery_level_2:
+  config_entry_id:
+  name:
+  platform: ios
+  unique_id: level_erik
+zwave.zwave_stick:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-1
+zwave.bryter:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-2
+zwave.fibaro_system_fgwpef_wall_plug_gen5:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-3
+binary_sensor.motion_sensor_158d00022778f7:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d00022778f7
+binary_sensor.motion_sensor_158d0001e07335:
+  config_entry_id:
+  name: Kjøkken
+  platform: xiaomi_aqara
+  unique_id: status158d0001e07335
+sensor.illumination_158d0001e07335:
+  config_entry_id:
+  name: Kjøkken
+  platform: xiaomi_aqara
+  unique_id: lux158d0001e07335
+sensor.pws_alerts:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,alerts'
+sensor.pws_temp_high_record_c:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,temp_high_record_c'
+sensor.pws_temp_low_1d_c:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,temp_low_1d_c'
+sensor.pws_temp_high_1d_c:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,temp_high_1d_c'
+sensor.pws_precip_1d:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,precip_1d'
+sensor.pws_wind_1d_kph:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,wind_1d_kph'
+sensor.pws_temp_c:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,temp_c'
+sensor.pws_wind_kph:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,wind_kph'
+sensor.pws_precip_1d_mm:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,precip_1d_mm'
+sensor.pws_temp_low_record_c:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: '@10.766903,59.945355,temp_low_record_c'
+binary_sensor.wall_switch_both_158d0002339475:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: dual_channel158d0002339475
+binary_sensor.wall_switch_left_158d0002339475:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: channel_0158d0002339475
+binary_sensor.wall_switch_right_158d0002339475:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: channel_1158d0002339475
+sensor.humidity_158d00022264a9:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d00022264a9
+sensor.temperature_158d00022264a9:
+  config_entry_id:
+  name: Bad
+  platform: xiaomi_aqara
+  unique_id: temperature158d00022264a9
+sensor.temperature_158d00020ecf51:
+  config_entry_id:
+  name: Ute 2
+  platform: xiaomi_aqara
+  unique_id: temperature158d00020ecf51
+sensor.humidity_158d00020ecf51:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d00020ecf51

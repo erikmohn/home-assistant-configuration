@@ -1,0 +1,83 @@
+- alias: Cover switch close left
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.wall_switch_left_158d0002339475
+      click_type: single
+  condition:
+    condition: template
+    value_template: '{{ states.input_boolean.cover_left.state == "off" }}'
+  action:
+    - service: cover.close_cover
+      data:
+        entity_id: cover.living_room_shutter_left
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.cover_left
+
+- alias: Cover switch open left
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.wall_switch_left_158d0002339475
+      click_type: single
+  condition:
+    condition: template
+    value_template: '{{ states.input_boolean.cover_left.state == "on" }}'
+  action:
+    - service: cover.open_cover
+      data:
+        entity_id: cover.living_room_shutter_left
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.cover_left
+
+- alias: Cover switch close right
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.wall_switch_right_158d0002339475
+      click_type: single
+  condition:
+    condition: template
+    value_template: '{{ states.input_boolean.cover_right.state == "off" }}'
+  action:
+    - service: cover.close_cover
+      data:
+        entity_id: cover.living_room_shutter_right
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.cover_right
+
+- alias: Cover switch open right
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.wall_switch_right_158d0002339475
+      click_type: single
+  condition:
+    condition: template
+    value_template: '{{ states.input_boolean.cover_right.state == "on" }}'
+  action:
+    - service: cover.open_cover
+      data:
+        entity_id: cover.living_room_shutter_right
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.cover_right
+
+- alias: Cover switch stop
+  trigger:
+    platform: event
+    event_type: click
+    event_data:
+      entity_id: binary_sensor.wall_switch_both_158d0002339475
+      dual_channel: both_click
+  action:
+    service: cover.stop_cover
+    data:
+      entity_id: cover.living_room_shutter
