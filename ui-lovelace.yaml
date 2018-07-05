@@ -1,4 +1,4 @@
-name: Fernanda Nissens gate 3F
+name: !secret name
 views:
   - name: Home
     tab_icon: mdi:home-assistant
