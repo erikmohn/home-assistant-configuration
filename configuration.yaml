@@ -9,11 +9,6 @@ homeassistant:
 
 frontend:
   javascript_version: latest
-  themes:
-    happy:
-      primary-color: pink
-    sad:
-      primary-color: blue
   extra_html_url:
     - /local/lovelace.html
 
@@ -58,8 +53,6 @@ homekit:
 weather:
   - platform: yweather      
 
-  
-#group: !include groups.yaml
 automation: !include_dir_merge_list automations/
 script: !include scripts.yaml
 
@@ -73,6 +66,84 @@ zwave:
   device_config:
     switch.bryter_switch:
       ignored: true
+
+input_text:
+  mm_message:
+    name: Melding
+
+input_boolean:
+  morgenradio:
+    name: Morgenradio på/av
+    initial: off
+    icon: mdi:radio
+  cover_left:
+  cover_right:
+
+input_datetime:
+  morgenradio:
+    name: Morgenradio tid
+    has_date: false
+    has_time: true
+
+
+media_player:
+  - platform: samsungtv
+    host: 192.168.1.74
+    mac: 50:85:69:f9:7b:67
+    timeout: 10
+xiaomi_aqara:
+  discovery_retry: 10
+  gateways:
+    - key: 5234864A6B4449D8
+
+rfxtrx:
+  device: /dev/ttyUSB0
+
+cover:
+  - platform: rfxtrx
+    automatic_add: False
+    signal_repetitions: 2
+    devices:
+      071a000001020301: # RFY
+        name: Living room Shutter
+      071a000001020302: # RFY
+        name: Living room Shutter Left
+      071a000001020303: # RFY
+        name: Living room Shutter Right
+
+switch:
+  - platform: rfxtrx
+    signal_repetitions: 4
+    devices:
+      0b11000404bc0cfe00010f70:
+        name: stue_kuler
+      0b11000373bc0cfe02010f70:
+        name: soverom_staalampe
+      0b11000403bc0cfe08010f70:
+        name: gjesterom
+      0b11000688bc0cfe06010f70:
+        name: yttergang
+      0b11000104bc0cfe03010f70:
+        name: gang
+      0b11000145bc0cfe07010f70:
+        name: soverom
+      0b11000300bc0cfe09010f70:
+        name: kontor
+      0b11000121bc0cfe08010f70:
+        name: kjokken
+  - platform: command_line
+    switches:
+      magicmirror:
+        command_on: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 'vcgencmd display_power 1' 2> /config/command.log
+        command_off: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 'vcgencmd display_power 0' 2> /config/command.log
+        command_state: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 './monitor_status.sh'
+        value_template: '{{ value == "0" }}'
+        friendly_name: MagicMirror
+
+shell_command:
+  new_mm_message: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 'echo "'<h2>{{ states.input_text.mm_message.state }} </h2>'" > /home/pi/MagicMirror/modules/default/hello$
+
+
 
 group:
   default_view:
@@ -251,82 +322,7 @@ group:
       - media_player.gang
       - media_player.stue
       - media_player.kjkken
-input_text:
-  mm_message:
-    name: Melding
-
-input_boolean:
-  morgenradio:
-    name: Morgenradio på/av
-    initial: off
-    icon: mdi:radio
-  cover_left:
-  cover_right:
-
-input_datetime:
-  morgenradio:
-    name: Morgenradio tid
-    has_date: false
-    has_time: true
-
-
-media_player:
-  - platform: samsungtv
-    host: 192.168.1.74
-    mac: 50:85:69:f9:7b:67
-    timeout: 10
-xiaomi_aqara:
-  discovery_retry: 10
-  gateways: 
-    - key: 5234864A6B4449D8
-
-rfxtrx:
-  device: /dev/ttyUSB0
-
-cover:
-  - platform: rfxtrx
-    automatic_add: False
-    signal_repetitions: 2
-    devices:
-      071a000001020301: # RFY
-        name: Living room Shutter 
-      071a000001020302: # RFY
-        name: Living room Shutter Left
-      071a000001020303: # RFY
-        name: Living room Shutter Right
-
-switch:
-  - platform: rfxtrx
-    signal_repetitions: 4
-    devices:
-      0b11000404bc0cfe00010f70:
-        name: stue_kuler
-      0b11000373bc0cfe02010f70:
-        name: soverom_staalampe
-      0b11000403bc0cfe08010f70:
-        name: gjesterom
-      0b11000688bc0cfe06010f70:
-        name: yttergang
-      0b11000104bc0cfe03010f70:
-        name: gang
-      0b11000145bc0cfe07010f70:
-        name: soverom
-      0b11000300bc0cfe09010f70:
-        name: kontor
-      0b11000121bc0cfe08010f70:
-        name: kjokken
-  - platform: command_line
-    switches:
-      magicmirror:
-        command_on: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 'vcgencmd display_power 1' 2> /config/command.log
-        command_off: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 'vcgencmd display_power 0' 2> /config/command.log
-        command_state: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 './monitor_status.sh'
-        value_template: '{{ value == "0" }}'
-        friendly_name: MagicMirror
-
-shell_command:
-  new_mm_message: ssh -F /config/ssh_config -i /config/ssh/id_rsa pi@192.168.1.201 'echo "'<h2>{{ states.input_text.mm_message.state }} </h2>'" > /home/pi/MagicMirror/modules/default/helloworld/helloworld.njk & pm2 restart mm' 
-
+ 
 sensor:
   - platform: speedtest
     monitored_conditions:
